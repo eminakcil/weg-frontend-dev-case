@@ -5,7 +5,7 @@ export default function Home() {
 
   return (
     <div>
-      <pre>{JSON.stringify(users)}</pre>
+      <pre>{JSON.stringify(users, null, 2)}</pre>
       home
     </div>
   )
