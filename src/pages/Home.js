@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Home</title>
+        <title>Çalışan Listesi</title>
       </Helmet>
       <div>
         <button onClick={loadUsers}>Reload Users</button>

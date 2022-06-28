@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet'
 import { collectUserFullName, sortedUsers } from '../utils'
 import { voteUser } from '../store/main'
 import { useEffect, useState } from 'react'
+import { plusCircle } from '../icons'
 
 export default function UserDetail() {
   const dispatch = useDispatch()
@@ -55,7 +56,7 @@ export default function UserDetail() {
               dispatch(voteUser({ uuid }))
             }}
           >
-            vote
+            {plusCircle}
           </button>
         </span>
         <span className="user-full-name">{userFullName}</span>
