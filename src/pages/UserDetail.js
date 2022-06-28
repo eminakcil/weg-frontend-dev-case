@@ -4,9 +4,7 @@ import NotFound from './errors/NotFound'
 import { Helmet } from 'react-helmet'
 import { collectUserFullName, sortedUsers } from '../utils'
 import { voteUser } from '../store/main'
-import { useEffect } from 'react'
-
-let currentIndex = 0
+import { useEffect, useState } from 'react'
 
 export default function UserDetail() {
   const dispatch = useDispatch()
@@ -20,12 +18,12 @@ export default function UserDetail() {
 
   const existingUser = users?.find(userFinder) || false
 
+  const [currentRank, setCurrentRank] = useState(0)
+
   useEffect(() => {
-    currentIndex = (sortedUsers()?.findIndex(userFinder) || -1) + 1
-    return () => {
-      currentIndex = 0
-    }
-  }, [])
+    const rank = sortedUsers()?.findIndex(userFinder) + 1
+    setCurrentRank(rank)
+  }, [existingUser])
 
   if (!existingUser) return <NotFound />
 
@@ -64,7 +62,7 @@ export default function UserDetail() {
         <div className="information-grid">
           <div className="text-center center-flex-col">
             <div className="vote-count">{existingUser?.vote || 0} puan</div>
-            <div className="rank">{currentIndex}.</div>
+            <div className="rank">{currentRank}.</div>
           </div>
           <div className="more-detail">
             <span className="heading">İletişim Bilgileri</span>
