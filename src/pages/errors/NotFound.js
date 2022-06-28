@@ -1,3 +1,12 @@
+import { Helmet } from 'react-helmet'
+
 export default function NotFound() {
-  return <div>Page not found!</div>
+  return (
+    <>
+      <Helmet>
+        <title>404 - Not found</title>
+      </Helmet>
+      <div>Page not found!</div>
+    </>
+  )
 }

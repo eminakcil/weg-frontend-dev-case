@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import NotFound from './errors/NotFound'
+import { Helmet } from 'react-helmet'
 
 export default function UserDetail() {
   const { uuid } = useParams()
@@ -10,5 +11,12 @@ export default function UserDetail() {
 
   if (!existingUser) return <NotFound />
 
-  return <pre>{JSON.stringify(existingUser, null, 2)}</pre>
+  return (
+    <>
+      <Helmet>
+        <title>{Object.values(existingUser.name).join(' ')}</title>
+      </Helmet>
+      <pre>{JSON.stringify(existingUser, null, 2)}</pre>
+    </>
+  )
 }
