@@ -1,16 +1,14 @@
 import { useRoutes } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import routes from './routes'
 import { useEffect } from 'react'
-import { setUsers } from './store/main'
-import { UserService } from './services'
+import { loadUsers } from './utils'
 
 export default function App() {
   const { users } = useSelector((state) => state.main)
-  const dispatch = useDispatch()
 
   useEffect(() => {
-    UserService.getUsers().then(({ results }) => dispatch(setUsers(results)))
+    if (!users) loadUsers()
   }, [])
 
   useEffect(() => {
