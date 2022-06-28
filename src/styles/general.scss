@@ -65,6 +65,11 @@ button {
   justify-content: center;
   align-items: center;
 
+  &.filled {
+    background-color: #666;
+    color: #fff;
+  }
+
   &:hover {
     cursor: pointer;
 

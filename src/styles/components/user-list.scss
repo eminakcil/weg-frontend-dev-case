@@ -4,7 +4,9 @@
   gap: $base-margin;
   margin-top: $base-margin;
 
-  @media screen and (min-width: 960px) {
-    grid-template-columns: repeat(2, 1fr);
+  &.double {
+    @media screen and (min-width: 960px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 }

@@ -4,6 +4,7 @@ const initialState = {
   users: localStorage.getItem('users')
     ? JSON.parse(localStorage.getItem('users'))
     : false,
+  layout: 'double',
 }
 
 const mainState = createSlice({
@@ -25,8 +26,11 @@ const mainState = createSlice({
         }
       })
     },
+    setLayout: (state, action) => {
+      state.layout = action.payload
+    },
   },
 })
 
-export const { setUsers, voteUser } = mainState.actions
+export const { setUsers, voteUser, setLayout } = mainState.actions
 export default mainState.reducer
