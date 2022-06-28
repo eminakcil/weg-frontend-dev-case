@@ -10,7 +10,7 @@ export default function UserList() {
     : false
 
   const [animationParent] = useAutoAnimate({
-    duration: 800,
+    duration: 600,
     easing: 'ease-out',
   })
 

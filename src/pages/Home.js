@@ -1,6 +1,6 @@
-import { loadUsers } from '../utils'
 import UserList from '../components/UserList'
 import { Helmet } from 'react-helmet'
+import Dropdown from '../components/Dropdown'
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
         <title>Çalışan Listesi</title>
       </Helmet>
       <div>
-        <button onClick={loadUsers}>Reload Users</button>
+        <Dropdown />
         <UserList />
         {/* <pre>{JSON.stringify(users, null, 2)}</pre> */}
       </div>
