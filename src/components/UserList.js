@@ -11,14 +11,15 @@ export default function UserList() {
   return (
     <>
       {sortedUsers && (
-        <ul>
-          {sortedUsers.map((user) => (
+        <div className="user-list">
+          {sortedUsers.map((user, index) => (
             <UserItem
               user={user}
               key={user.login.uuid}
+              number={index + 1}
             />
           ))}
-        </ul>
+        </div>
       )}
     </>
   )

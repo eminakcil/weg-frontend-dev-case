@@ -1,0 +1,47 @@
+.user-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $base-margin;
+  margin-top: $base-margin;
+
+  & .image-outline {
+    padding: 4px;
+    border: 4px solid #4287f5;
+    display: inline-flex;
+    box-sizing: border-box;
+    width: min-content;
+    height: min-content;
+  }
+
+  & .user-full-name {
+    font-size: 2em;
+    font-weight: 500;
+  }
+
+  & .information-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @media screen and (min-width: 960px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    & .vote-count {
+      font-size: 2em;
+    }
+
+    & .rank {
+      font-size: 3em;
+      font-weight: 600;
+    }
+
+    & .more-detail {
+      line-height: 1.3;
+      & .heading {
+        font-size: 1.2em;
+      }
+    }
+  }
+}

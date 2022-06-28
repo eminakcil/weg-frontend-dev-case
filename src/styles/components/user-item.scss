@@ -1,0 +1,48 @@
+.user-list-item {
+  border: 1px solid #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & .heading {
+    display: flex;
+    flex-direction: row;
+    gap: $base-margin;
+
+    & .personal-detail {
+      display: flex;
+      flex-direction: column;
+      gap: $base-margin / 4;
+      max-width: 200px;
+    }
+  }
+
+  & img {
+    width: 64px;
+  }
+
+  & .user-full-name {
+    width: 100%;
+    display: inline-block;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #121212;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  & button {
+    height: 100%;
+    aspect-ratio: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    box-sizing: border-box;
+  }
+}

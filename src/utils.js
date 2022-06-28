@@ -7,3 +7,16 @@ export const loadUsers = () => {
     store.dispatch(setUsers(results))
   })
 }
+
+export const collectUserFullName = (nameList) =>
+  Object.values(nameList).join(' ')
+
+export const sortedUsers = () => {
+  const {
+    main: { users },
+  } = store.getState()
+
+  return users
+    ? [...users].sort((a, b) => (b?.vote || 0) - (a?.vote || 0))
+    : false
+}
