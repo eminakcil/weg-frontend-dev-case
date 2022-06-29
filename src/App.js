@@ -6,7 +6,7 @@ import { loadUsers } from './utils'
 
 export default function App() {
   const location = useLocation()
-  const { users } = useSelector((state) => state.main)
+  const { users, logs } = useSelector((state) => state.main)
 
   useEffect(() => {
     if (!users) loadUsers()
@@ -19,6 +19,10 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem('users', JSON.stringify(users))
   }, [users])
+
+  useEffect(() => {
+    localStorage.setItem('logs', JSON.stringify(logs))
+  }, [logs])
 
   return <div className="container">{useRoutes(routes)}</div>
 }
