@@ -29,7 +29,24 @@ table.spacing {
 }
 
 .events-list {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+
   & .vote-text {
     font-size: 1.5em;
   }
+
+  & .title {
+    padding: 25px;
+  }
+}
+
+.event-item {
+  display: flex;
+  flex-direction: row;
+}
+
+.vote-date {
+  font-size: 2em;
 }

@@ -9,6 +9,17 @@ export default function Events() {
   const { logs } = useSelector((state) => state.main)
   const navigate = useNavigate()
 
+  const logsByDate = logs.reduce((acc, obj) => {
+    const currDate = dayjs(obj.date).format('DD.MM.YYYY')
+    if (currDate in acc) {
+      acc[currDate].push(obj)
+    } else {
+      acc[currDate] = [obj]
+    }
+
+    return acc
+  }, {})
+
   return (
     <>
       <Helmet>
@@ -24,28 +35,30 @@ export default function Events() {
         Ana Sayfa
       </button>
       <div className="events-list">
-        <table className="spacing">
-          <tbody>
-            {logs.map((log, index) => (
-              <tr key={index}>
-                <td>
+        {Object.entries(logsByDate).map(([key, value]) => (
+          <>
+            {value.map((log, index) => (
+              <div
+                className="event-item"
+                key={index}
+              >
+                <div style={{ width: 282 }}>
                   <UserItem
                     user={getUser(log.userId)}
                     vote={false}
                   />
-                </td>
-                <td>
-                  <span className="vote-text">
-                    {dayjs(log.date).format('HH:mm')}
-                  </span>
-                </td>
-                <td>
-                  <span className="vote-text">{log.vote} puan verildi</span>
-                </td>
-              </tr>
+                </div>
+                <span className="vote-text">
+                  {dayjs(log.date).format('HH:mm')}
+                </span>
+                <span className="vote-text">{log.vote} puan verildi</span>
+              </div>
             ))}
-          </tbody>
-        </table>
+            <div className="title">
+              <span className="vote-date">{key}</span>
+            </div>
+          </>
+        ))}
       </div>
     </>
   )
