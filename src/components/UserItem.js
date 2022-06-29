@@ -4,7 +4,7 @@ import { voteUser } from '../store/main'
 import { collectUserFullName } from '../utils'
 import { plusCircle } from '../icons'
 
-export default function UserItem({ user, number = false }) {
+export default function UserItem({ user, number = false, vote = true }) {
   const dispatch = useDispatch()
 
   const UserLink = ({ children }) => {
@@ -31,16 +31,18 @@ export default function UserItem({ user, number = false }) {
           <span>@{user.login.username}</span>
         </div>
       </div>
-      <div className="center-flex">
-        <span className="bold text-md">{user?.vote || 0}</span>
-        <button
-          onClick={() => {
-            dispatch(voteUser({ uuid: user.login.uuid }))
-          }}
-        >
-          {plusCircle}
-        </button>
-      </div>
+      {vote && (
+        <div className="center-flex">
+          <span className="bold text-md">{user?.vote || 0}</span>
+          <button
+            onClick={() => {
+              dispatch(voteUser({ uuid: user.login.uuid }))
+            }}
+          >
+            {plusCircle}
+          </button>
+        </div>
+      )}
     </div>
   )
 }
