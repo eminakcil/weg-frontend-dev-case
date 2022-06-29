@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import dayjs from 'dayjs'
 
 const initialState = {
   users: localStorage.getItem('users')
@@ -37,6 +38,7 @@ const mainState = createSlice({
         state.logs.push({
           userId: uuid,
           vote: qty,
+          date: dayjs(),
         })
       }
     },
