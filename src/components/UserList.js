@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 import UserItem from './UserItem'
-import { useAutoAnimate } from '@formkit/auto-animate/react'
+// import { useAutoAnimate } from '@formkit/auto-animate/react'
 import classNames from 'classnames'
 
 export default function UserList() {
@@ -10,12 +10,12 @@ export default function UserList() {
     ? [...users].sort((a, b) => (b?.vote || 0) - (a?.vote || 0))
     : false
 
-  const animationConfig = {
-    duration: 600,
-    easing: 'ease-out',
-  }
+  // const animationConfig = {
+  //   duration: 0,
+  //   easing: 'ease-out',
+  // }
 
-  const [animationParent] = useAutoAnimate(animationConfig)
+  // const [animationParent] = useAutoAnimate(animationConfig)
 
   return (
     <>
@@ -25,7 +25,7 @@ export default function UserList() {
             'user-list': true,
             double: layout === 'double',
           })}
-          ref={animationParent}
+          // ref={animationParent}
         >
           {sortedUsers.map((user, index) => (
             <UserItem
