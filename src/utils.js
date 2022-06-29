@@ -21,3 +21,11 @@ export const sortedUsers = () => {
     ? [...users].sort((a, b) => (b?.vote || 0) - (a?.vote || 0))
     : false
 }
+
+export const getUser = (uuid) => {
+  const {
+    main: { users },
+  } = store.getState()
+
+  return users.find((user) => user.login.uuid === uuid)
+}
