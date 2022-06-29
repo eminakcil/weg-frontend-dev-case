@@ -6,6 +6,7 @@ import { collectUserFullName, sortedUsers } from '../utils'
 import { voteUser } from '../store/main'
 import { useEffect, useState } from 'react'
 import { plusCircle } from '../icons'
+import dayjs from 'dayjs'
 
 export default function UserDetail() {
   const dispatch = useDispatch()
@@ -80,9 +81,12 @@ export default function UserDetail() {
                   {existingUser.location.postcode}
                 </span>
               </li>
-              <li>Telefon numarası. {existingUser.phone}</li>
+              <li>Telefon numarası: {existingUser.phone}</li>
               <li>Ülke: {existingUser.location.country}</li>
-              <li>Doğum Tarihi: {existingUser.dob.date}</li>
+              <li>
+                Doğum Tarihi:{' '}
+                {dayjs(existingUser.dob.date).format('MM.DD.YYYY')}
+              </li>
             </ul>
           </div>
         </div>

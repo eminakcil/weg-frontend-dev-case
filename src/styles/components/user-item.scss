@@ -12,7 +12,7 @@
     & .personal-detail {
       display: flex;
       flex-direction: column;
-      gap: $base-margin / 4;
+      gap: calc($base-margin / 4);
       max-width: 200px;
     }
   }

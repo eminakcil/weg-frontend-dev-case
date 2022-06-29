@@ -22,7 +22,7 @@ export default function Home() {
       </Helmet>
       <div>
         <div className="home-heading">Ayın Elemanı</div>
-        {firstUser && (
+        {firstUser && firstUser?.vote && (
           <div>
             <CircleUser user={firstUser} />
           </div>
