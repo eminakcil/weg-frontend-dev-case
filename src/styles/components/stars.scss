@@ -1,0 +1,18 @@
+.star-outlined {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  color: #fff;
+
+  & > &-inside {
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    color: #ffcd3c;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+}
