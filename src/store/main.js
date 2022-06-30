@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import dayjs from 'dayjs'
 
 const initialState = {
   users: false,
@@ -28,7 +29,11 @@ const mainState = createSlice({
 
       const lastLog = state.logs?.[state.logs.length - 1]
 
-      if (lastLog && lastLog?.userId === uuid) {
+      const dateCheck = (date) =>
+        dayjs(date).format('DD.MM.YYYY') ===
+        dayjs(+Date.now()).format('DD.MM.YYYY')
+
+      if (lastLog && lastLog?.userId === uuid && dateCheck(lastLog.date)) {
         lastLog.vote += qty
       } else {
         state.logs.push({

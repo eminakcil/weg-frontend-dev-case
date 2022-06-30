@@ -95,7 +95,7 @@ export default function UserDetail() {
                   <li>Ülke: {existingUser.location.country}</li>
                   <li>
                     Doğum Tarihi:{' '}
-                    {dayjs(existingUser.dob.date).format('MM.DD.YYYY')}
+                    {dayjs(existingUser.dob.date).format('DD.MM.YYYY')}
                   </li>
                 </ul>
               </div>
