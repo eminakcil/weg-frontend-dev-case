@@ -19,6 +19,7 @@
 
   & img {
     width: 64px;
+    cursor: pointer;
   }
 
   & .user-full-name {
@@ -31,6 +32,8 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    
+    cursor: pointer;
   }
 
   & button {
