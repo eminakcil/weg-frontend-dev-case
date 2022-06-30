@@ -38,64 +38,66 @@ export default function UserDetail() {
       <Helmet>
         <title>{userFullName}</title>
       </Helmet>
-      <button
-        onClick={() => {
-          router.push('/')
-        }}
-      >
-        Ana Sayfa
-      </button>
-      {existingUser && (
-        <div className="user-detail">
-          <span className="image-outline rounded-full">
-            <img
-              src={existingUser.picture.large}
-              alt={userFullName}
-              className="rounded-full"
-            />
-          </span>
-          <span>
-            <button
-              onClick={() => {
-                dispatch(voteUser({ uuid }))
-              }}
-            >
-              {plusCircle}
-            </button>
-          </span>
-          <span className="user-full-name">{userFullName}</span>
-          <div className="information-grid">
-            <div className="text-center center-flex-col">
-              <div className="vote-count">{existingUser?.vote || 0} puan</div>
-              <div className="rank">{currentRank}.</div>
-            </div>
-            <div className="more-detail">
-              <span className="heading">İletişim Bilgileri</span>
-              <ul>
-                <li>Kullanıcı adı: @{existingUser.login.username}</li>
-                <li>E-posta: {existingUser.email}</li>
-                <li>
-                  <span className="block">
-                    Adres: {existingUser.location.street.number}{' '}
-                    {existingUser.location.street.name}
-                  </span>
-                  <span className="block">
-                    {existingUser.location.state}{' '}
-                    {existingUser.location.country}{' '}
-                    {existingUser.location.postcode}
-                  </span>
-                </li>
-                <li>Telefon numarası: {existingUser.phone}</li>
-                <li>Ülke: {existingUser.location.country}</li>
-                <li>
-                  Doğum Tarihi:{' '}
-                  {dayjs(existingUser.dob.date).format('MM.DD.YYYY')}
-                </li>
-              </ul>
+      <div className="container">
+        <button
+          onClick={() => {
+            router.push('/')
+          }}
+        >
+          Ana Sayfa
+        </button>
+        {existingUser && (
+          <div className="user-detail">
+            <span className="image-outline rounded-full">
+              <img
+                src={existingUser.picture.large}
+                alt={userFullName}
+                className="rounded-full"
+              />
+            </span>
+            <span>
+              <button
+                onClick={() => {
+                  dispatch(voteUser({ uuid }))
+                }}
+              >
+                {plusCircle}
+              </button>
+            </span>
+            <span className="user-full-name">{userFullName}</span>
+            <div className="information-grid">
+              <div className="text-center center-flex-col">
+                <div className="vote-count">{existingUser?.vote || 0} puan</div>
+                <div className="rank">{currentRank}.</div>
+              </div>
+              <div className="more-detail">
+                <span className="heading">İletişim Bilgileri</span>
+                <ul>
+                  <li>Kullanıcı adı: @{existingUser.login.username}</li>
+                  <li>E-posta: {existingUser.email}</li>
+                  <li>
+                    <span className="block">
+                      Adres: {existingUser.location.street.number}{' '}
+                      {existingUser.location.street.name}
+                    </span>
+                    <span className="block">
+                      {existingUser.location.state}{' '}
+                      {existingUser.location.country}{' '}
+                      {existingUser.location.postcode}
+                    </span>
+                  </li>
+                  <li>Telefon numarası: {existingUser.phone}</li>
+                  <li>Ülke: {existingUser.location.country}</li>
+                  <li>
+                    Doğum Tarihi:{' '}
+                    {dayjs(existingUser.dob.date).format('MM.DD.YYYY')}
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </>
   )
 }

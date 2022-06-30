@@ -20,19 +20,21 @@ export default function Home() {
       <Helmet>
         <title>Çalışan Listesi</title>
       </Helmet>
-      <div>
-        <div className="home-heading">Ayın Elemanı</div>
-        {firstUser && firstUser?.vote && (
-          <div>
-            <CircleUser user={firstUser} />
+      <div className="container">
+        <div>
+          <div className="home-heading">Ayın Elemanı</div>
+          {firstUser && firstUser?.vote && (
+            <div>
+              <CircleUser user={firstUser} />
+            </div>
+          )}
+          <div className="button-group">
+            <Dropdown />
+            <LayoutButtons />
           </div>
-        )}
-        <div className="button-group">
-          <Dropdown />
-          <LayoutButtons />
+          <UserList />
+          {/* <pre>{JSON.stringify(users, null, 2)}</pre> */}
         </div>
-        <UserList />
-        {/* <pre>{JSON.stringify(users, null, 2)}</pre> */}
       </div>
     </>
   )

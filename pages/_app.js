@@ -43,9 +43,7 @@ export default function _app({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <GlobalListeners>
-        <div className="container">
-          <Component {...pageProps} />
-        </div>
+        <Component {...pageProps} />
       </GlobalListeners>
     </Provider>
   )

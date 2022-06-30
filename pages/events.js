@@ -26,40 +26,42 @@ export default function Events() {
       <Helmet>
         <title>Puan Günlüğü</title>
       </Helmet>
-      <div className="events-heading">Puan Günlüğü</div>
+      <div className="container">
+        <div className="events-heading">Puan Günlüğü</div>
 
-      <button
-        onClick={() => {
-          router.push('/')
-        }}
-      >
-        Ana Sayfa
-      </button>
-      <div className="events-list">
-        {Object.entries(logsByDate).map(([key, value], index) => (
-          <Fragment key={index}>
-            {value.map((log, index) => (
-              <div
-                className="event-item"
-                key={index}
-              >
-                <div style={{ width: 282 }}>
-                  <UserItem
-                    user={getUser(log.userId)}
-                    vote={false}
-                  />
+        <button
+          onClick={() => {
+            router.push('/')
+          }}
+        >
+          Ana Sayfa
+        </button>
+        <div className="events-list">
+          {Object.entries(logsByDate).map(([key, value], index) => (
+            <Fragment key={index}>
+              {value.map((log, index) => (
+                <div
+                  className="event-item"
+                  key={index}
+                >
+                  <div style={{ width: 282 }}>
+                    <UserItem
+                      user={getUser(log.userId)}
+                      vote={false}
+                    />
+                  </div>
+                  <span className="vote-text">
+                    {dayjs(log.date).format('HH:mm')}
+                  </span>
+                  <span className="vote-text">{log.vote} puan verildi</span>
                 </div>
-                <span className="vote-text">
-                  {dayjs(log.date).format('HH:mm')}
-                </span>
-                <span className="vote-text">{log.vote} puan verildi</span>
+              ))}
+              <div className="title">
+                <span className="vote-date">{key}</span>
               </div>
-            ))}
-            <div className="title">
-              <span className="vote-date">{key}</span>
-            </div>
-          </Fragment>
-        ))}
+            </Fragment>
+          ))}
+        </div>
       </div>
     </>
   )
