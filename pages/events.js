@@ -1,9 +1,10 @@
 import { Helmet } from 'react-helmet'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
-import { getUser } from '../utils'
-import UserItem from '../components/UserItem'
+import { getUser } from '../src/utils'
+import UserItem from '../src/components/UserItem'
 import dayjs from 'dayjs'
+import { Fragment } from 'react'
 
 export default function Events() {
   const { logs } = useSelector((state) => state.main)
@@ -35,8 +36,8 @@ export default function Events() {
         Ana Sayfa
       </button>
       <div className="events-list">
-        {Object.entries(logsByDate).map(([key, value]) => (
-          <>
+        {Object.entries(logsByDate).map(([key, value], index) => (
+          <Fragment key={index}>
             {value.map((log, index) => (
               <div
                 className="event-item"
@@ -57,7 +58,7 @@ export default function Events() {
             <div className="title">
               <span className="vote-date">{key}</span>
             </div>
-          </>
+          </Fragment>
         ))}
       </div>
     </>

@@ -33,7 +33,7 @@ img {
   }
 }
 
-#root {
+#root, #__next {
   display: flex;
   flex-direction: column;
   align-items: center;

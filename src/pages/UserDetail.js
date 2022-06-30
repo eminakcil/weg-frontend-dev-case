@@ -1,6 +1,5 @@
-import { useParams, useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/router'
 import { useSelector, useDispatch } from 'react-redux'
-import NotFound from './errors/NotFound'
 import { Helmet } from 'react-helmet'
 import { collectUserFullName, sortedUsers } from '../utils'
 import { voteUser } from '../store/main'
@@ -10,8 +9,8 @@ import dayjs from 'dayjs'
 
 export default function UserDetail() {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const { uuid } = useParams()
+  const router = useRouter()
+  const { uuid } = router.query
   const { users } = useSelector((state) => state.main)
 
   const userFinder = (user) => {
@@ -27,7 +26,11 @@ export default function UserDetail() {
     setCurrentRank(rank)
   }, [existingUser])
 
-  if (!existingUser) return <NotFound />
+  if (!existingUser) {
+    return {
+      notFound: true,
+    }
+  }
 
   const userFullName = collectUserFullName(existingUser.name)
 
@@ -38,7 +41,7 @@ export default function UserDetail() {
       </Helmet>
       <button
         onClick={() => {
-          navigate('/')
+          router.push('/')
         }}
       >
         Ana Sayfa

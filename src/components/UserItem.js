@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { voteUser } from '../store/main'
 import { collectUserFullName } from '../utils'
 import { plusCircle } from '../icons'
@@ -8,7 +8,7 @@ export default function UserItem({ user, number = false, vote = true }) {
   const dispatch = useDispatch()
 
   const UserLink = ({ children }) => {
-    return <Link to={`/employees/${user.login.uuid}`}>{children}</Link>
+    return <Link href={`/employees/${user.login.uuid}`}>{children}</Link>
   }
 
   return (

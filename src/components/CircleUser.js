@@ -1,9 +1,9 @@
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/router'
 import { collectUserFullName } from '../utils'
 import Stars from './Stars'
 
 export default function CircleUser({ user }) {
-  const navigate = useNavigate()
+  const router = useRouter()
   const userFullName = collectUserFullName(user.name)
 
   return (
@@ -12,7 +12,7 @@ export default function CircleUser({ user }) {
         <span className="user-card-text">{userFullName}</span>
         <span
           onClick={() => {
-            navigate(`/employees/${user.login.uuid}`)
+            router.push(`/employees/${user.login.uuid}`)
           }}
           className="image-outline rounded-full pointer"
         >

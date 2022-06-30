@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useRouter } from 'next/router'
 import { setLayout } from '../store/main'
 import { minus } from '../icons'
 import classNames from 'classnames'
 
 export default function LayoutButtons() {
-  const navigate = useNavigate()
+  const router = useRouter()
   const dispatch = useDispatch()
   const { layout } = useSelector((state) => state.main)
 
@@ -31,7 +31,7 @@ export default function LayoutButtons() {
         {minus}
       </button>
 
-      <button onClick={() => navigate('/events')}>Puan Günlüğü</button>
+      <button onClick={() => router.push('/events')}>Puan Günlüğü</button>
     </>
   )
 }
