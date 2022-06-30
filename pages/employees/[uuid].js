@@ -6,12 +6,13 @@ import { voteUser } from '../../src/store/main'
 import { useEffect, useState } from 'react'
 import { plusCircle } from '../../src/icons'
 import dayjs from 'dayjs'
+import NotFound from '../404'
 
 export default function UserDetail() {
   const dispatch = useDispatch()
   const router = useRouter()
   const { uuid } = router.query
-  const { users } = useSelector((state) => state.main)
+  const { users, storeCheck } = useSelector((state) => state.main)
 
   const userFinder = (user) => {
     return user.login.uuid === uuid
@@ -28,6 +29,10 @@ export default function UserDetail() {
       : false
     if (rank) setCurrentRank(rank)
   }, [users, existingUser])
+
+  if (storeCheck && !existingUser) {
+    return <NotFound />
+  }
 
   const userFullName = existingUser
     ? collectUserFullName(existingUser.name)

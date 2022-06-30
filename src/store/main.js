@@ -4,6 +4,7 @@ const initialState = {
   users: false,
   layout: 'double',
   logs: [],
+  storeCheck: false,
 }
 
 const mainState = createSlice({
@@ -43,8 +44,12 @@ const mainState = createSlice({
     setLogs: (state, action) => {
       state.logs = action.payload
     },
+    setStoreCheck: (state, action) => {
+      state.storeCheck = action.payload
+    },
   },
 })
 
-export const { setUsers, voteUser, setLayout, setLogs } = mainState.actions
+export const { setUsers, voteUser, setLayout, setLogs, setStoreCheck } =
+  mainState.actions
 export default mainState.reducer

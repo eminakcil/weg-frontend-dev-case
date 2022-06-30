@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Provider } from 'react-redux'
 import { useSelector, useDispatch } from 'react-redux'
-import { setUsers, setLogs } from '../src/store/main'
+import { setUsers, setLogs, setStoreCheck } from '../src/store/main'
 import store from '../src/store'
 import '../styles/index.scss'
 import { loadUsers } from '../src/utils'
@@ -18,6 +18,8 @@ function GlobalListeners({ children }) {
     } else {
       loadUsers()
     }
+
+    dispatch(setStoreCheck(true))
 
     dispatch(
       setLogs(
